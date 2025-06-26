@@ -2,7 +2,8 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import { registerRoutes } from "./decorator/registerRoute";
-import { PasswordController } from "./password.controller";
+import { PasswordController } from "./controllers/password.controller";
+import { userControllers } from "./controllers/user.auth.controllers";
 
 const app = express();
 const port = 5555;
@@ -13,7 +14,7 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 
-registerRoutes(app,[PasswordController]);
+registerRoutes(app,[PasswordController, userControllers]);
 
 app.listen(port, () => {
   console.log(`API running at http://localhost:${port}`);

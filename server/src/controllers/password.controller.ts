@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { Controller } from "./decorator/controller.decorator";
-import { Route } from "./decorator/route.decotrator";
-import { PasswordService } from "./password.service";
-import { sendError, sendSuccess } from "./utils/response.utils";
+import { Controller } from "../decorator/controller.decorator";
+import { Route } from "../decorator/route.decotrator";
+import { sendError, sendSuccess } from "../utils/response.utils";
 import { StatusCodes } from "http-status-codes";
+import { PasswordService } from "../services/password.service";
 
 
 @Controller("/password")
@@ -31,7 +31,7 @@ export class PasswordController {
       const result = await this.passwordService.getAll();
       sendSuccess(res, StatusCodes.OK, "view success", result)
     } catch (error) {
-      console.log("error during assd new password");
+      console.log("error during view new password", (error as Error).message);
       sendError(res, StatusCodes.INTERNAL_SERVER_ERROR, "internal server error during add new password")
     }
   }

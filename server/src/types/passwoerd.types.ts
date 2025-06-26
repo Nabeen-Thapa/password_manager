@@ -23,6 +23,7 @@ export interface PasswordEntry {
   username: string;
   password: string; 
   service?: string;
+  passwordKey?: string;
 }
 
 export interface PasswordRequest {
