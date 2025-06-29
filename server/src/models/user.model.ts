@@ -13,6 +13,6 @@ export class Users extends baseModel{
     @Column()
     masterId!:string;
 
-    @OneToMany(()=> Passwords, Password => Password.users)
+    @OneToMany(()=> Passwords, Password => Password.user)
     passowrds!: Passwords;
 }

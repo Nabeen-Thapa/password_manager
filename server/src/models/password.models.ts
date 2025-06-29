@@ -13,6 +13,9 @@ export class Passwords extends baseModel{
     @Column()
     password!:string;
 
+    @Column()
+    userId?:string;
+
     @ManyToOne(()=>Users, users=>users.passowrds)
-    users!:Users;
+    user?:Users;
 }

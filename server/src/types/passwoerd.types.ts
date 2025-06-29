@@ -14,7 +14,7 @@ export interface PasswordData {
   service:string;
   username: string;
   password: string;
-  id: string;
+  id?:string;
 }
 
 
