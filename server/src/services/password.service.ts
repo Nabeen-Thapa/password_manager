@@ -28,11 +28,8 @@ export class PasswordService {
       })
       await this.passwordRepo.save(newPassword);
     } catch (error) {
-
     }
-
   }
-
 
   async getAll(userId: string) {
     try {

@@ -18,7 +18,6 @@ export class PasswordController {
       console.log("contrller:", passwordInfo)
       const id = req.user?.id as string;
       const result = await this.passwordService.add(passwordInfo, id);
-      //if (!result) return sendError(res, StatusCodes.BAD_REQUEST, "someting wrong");
       sendSuccess(res, StatusCodes.OK, "successfully added");
     } catch (err: any) {
       console.log("error during save new password", err.message);

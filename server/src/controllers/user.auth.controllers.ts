@@ -57,17 +57,14 @@ export class userControllers {
         return getCurrentUser(req, res);
     }
 
-    @Route("get", "/auth/logout")
+    @Route("get", "/auth/logout", [authenticate])
     async useLogoutController(req: Request, res: Response) {
         try {
-            console.log("logout controller")
-            const payload = getCurrentUser(req, res);
-            if (!payload) return sendError(res, StatusCodes.UNAUTHORIZED, "invalid or missong token");
-           
-             clearCookie(res);
-           return sendSuccess(res, StatusCodes.OK, "successfully logout");
+             if (!req.user) return sendError(res, StatusCodes.UNAUTHORIZED, "you are not authorized");
+            clearCookie(res);
+            return sendSuccess(res, StatusCodes.OK, "successfully logout");
         } catch (error) {
-            sendError(res, StatusCodes.INTERNAL_SERVER_ERROR, "problem in logout")
+            return sendError(res, StatusCodes.INTERNAL_SERVER_ERROR, "problem in logout");
         }
     }
 } 
